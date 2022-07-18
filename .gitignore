@@ -1,0 +1,6 @@
+.idea
+allure-results/
+debug.mjs
+node_modules/
+allure-report/
+

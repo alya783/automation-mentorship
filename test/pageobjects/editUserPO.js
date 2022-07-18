@@ -1,8 +1,20 @@
 class EditUser {
     
+    get username(){
+        return $('[name="username"]');
+    }
+
+    get dropdownIcon(){
+        return $('//li[@class="dropdown icon"]');
+    }
+
+    get logout(){
+        return $('//a[@href="/logout"]');
+    }
+
     async exitPage () {
-        await $('//li[@class="dropdown icon"]').click();
-        await $('//a[@href="/logout"]').click();
+        await this.dropdownIcon.click();
+        await this.logout.click();
     }
 
 }
