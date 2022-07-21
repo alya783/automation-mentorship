@@ -43,6 +43,8 @@ class ModalWindow {
     async close(){
         await this.closeModalSign.click();
     }
+
+
 }
 
 module.exports = new ModalWindow();

@@ -11,8 +11,11 @@
         "wdio-chromedriver-service": "^7.3.2"
     },
     "scripts": {
-        "wdio": "wdio run wdio.conf.js"
+        "test-login": "npx wdio run ./wdio.conf.js --spec login.js", 
+        "test-example": "npx wdio run ./wdio.conf.js --spec example.e2e.js",
+        "test-table": "npx wdio run ./wdio.conf.js --spec table.js"
     },
+
     "dependencies": {
         "dotenv": "^16.0.1"
     }
