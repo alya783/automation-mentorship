@@ -60,6 +60,9 @@ exports.config = {
             //
             browserName: 'chrome',
             acceptInsecureCerts: true,
+            'goog:chromeOptions':{
+                args: ['--headless']
+            }
             // If outputDir is provided WebdriverIO can capture driver session logs
             // it is possible to configure which logTypes to include/exclude.
             // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -73,7 +76,9 @@ exports.config = {
             maxInstances: 5,
             browserName: 'firefox',
             'moz:firefoxOptions': {
-                binary: '/opt/fireFoxNight/fireFoxNight/firefox-Nightly', // download Nightly version and write the path to it
+                binary: '/opt/fireFoxNight/fireFoxNight/firefox-Nightly', 
+                args: ['--headless'],
+                // download Nightly version and write the path to it
             },
             // If outputDir is provided WebdriverIO can capture driver session logs
             // it is possible to configure which logTypes to exclude.
@@ -177,8 +182,17 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+
+    onPrepare: function (config, capabilities) {
+        const fs = require('fs-extra');
+        const folderName = './screenshots';
+
+        if (!fs.existsSync(folderName)){
+            fs.mkdirSync(folderName);
+        }
+
+        fs.emptyDirSync(folderName);
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -216,8 +230,10 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+
+    before: async function (capabilities, specs) {
+        await browser.deleteCookies();
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -258,9 +274,12 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
-
+     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+        if (!passed) {
+            const filename = test.title.replace(/[\s.,%-]/g, '_');
+            await browser.saveScreenshot(`./screenshots/${filename}.png`);
+        }
+     },
 
     /**
      * Hook that gets executed after the suite has ended
