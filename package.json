@@ -4,6 +4,7 @@
     "private": true,
     "devDependencies": {
         "@wdio/cli": "^7.20.5",
+        "@wdio/devtools-service": "^7.20.7",
         "@wdio/local-runner": "^7.20.5",
         "@wdio/mocha-framework": "^7.20.3",
         "@wdio/spec-reporter": "^7.20.3",
@@ -11,11 +12,12 @@
         "wdio-chromedriver-service": "^7.3.2"
     },
     "scripts": {
-        "test-login": "npx wdio run ./wdio.conf.js --spec login.js", 
+        "test-login": "npx wdio run ./wdio.conf.js --spec login.js",
         "test-example": "npx wdio run ./wdio.conf.js --spec example.e2e.js",
-        "test-table": "npx wdio run ./wdio.conf.js --spec table.js"
+        "test-table": "npx wdio run ./wdio.conf.js --spec table.js",
+        "test-data": "npx wdio run ./wdio.conf.js --spec dataJSON.js",
+        "test-actions": "npx wdio run ./wdio2.conf.js --spec actions.js"
     },
-
     "dependencies": {
         "dotenv": "^16.0.1"
     }

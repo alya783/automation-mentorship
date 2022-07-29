@@ -21,7 +21,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/*.js'  //'./test/specs/**/*.js'
+        './test/specs2/*.js'  //'./test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -61,39 +61,16 @@ exports.config = {
             browserName: 'chrome',
             acceptInsecureCerts: true,
             'goog:chromeOptions':{
-                args: ['--headless'],
+                //args: ['--headless'],
                 mobileEmulation: { deviceName: 'iPad Pro' },
               
             },
-            //'custom:networkConnectionEnabled': true,
             // If outputDir is provided WebdriverIO can capture driver session logs
             // it is possible to configure which logTypes to include/exclude.
             // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
             // excludeDriverLogs: ['bugreport', 'server'],
             
         }, 
-        {
-            // maxInstances can get overwritten per capability. So if you have an in house Selenium
-            // grid with only 5 firefox instance available you can make sure that not more than
-            // 5 instance gets started at a time.
-            maxInstances: 5,
-            browserName: 'firefox',
-            'moz:firefoxOptions': {
-                binary: '/opt/fireFoxNight/fireFoxNight/firefox-Nightly', 
-                // download Nightly version and write the path to it
-                args: ['--headless'],
-                mobileEmulation: { deviceName: 'iPad Pro' },
-                "moz:debuggerAddress": true,
-            },
-            
-            // If outputDir is provided WebdriverIO can capture driver session logs
-            // it is possible to configure which logTypes to exclude.
-            // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-            // excludeDriverLogs: ['bugreport', 'server'],
-            //
-            // Parameter to ignore some or all Puppeteer default arguments
-            // ignoreDefaultArgs: ['-foreground'], // set value to true to ignore all default arguments
-        }
     ],
     //
     // ===================
@@ -126,7 +103,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://stocksnap.io/',      //http://localhost',
+    baseUrl: 'https://material.angular.io/components/categories',      //http://localhost',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -237,9 +214,9 @@ exports.config = {
      * @param {Object}         browser      instance of created browser/device session
      */
 
-    /*before: async function (capabilities, specs) {
+    before: async function (capabilities, specs) {
         await browser.deleteCookies();
-    },*/
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name

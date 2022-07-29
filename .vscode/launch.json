@@ -6,7 +6,7 @@
             "type": "node",
             "request": "launch",
             "args": [
-                "wdio.conf.js", "--spec", "login"
+                "wdio2.conf.js", "--spec", "actions"
             ], 
             "cwd": "${workspaceFolder}",
             "autoAttachChildProcesses": true,

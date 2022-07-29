@@ -9,6 +9,11 @@ const errorMessage = "Email is not registered.";
 const userAssertion = 'alya97';
 
 describe('Login into the sysytem', () => {
+    
+    beforeEach(async () => {
+        await browser.deleteCookies();
+    
+    });
 
     before('open site', async function () {
        await ModalWindow.open();

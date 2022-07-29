@@ -1,6 +1,6 @@
 class MainPage {
     get trendingLinks(){
-        return $('.popular-tags').$$('a');
+        return $$('.popular-tags a');
     }
 }
 
