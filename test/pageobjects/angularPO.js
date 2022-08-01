@@ -5,9 +5,9 @@ class Materias {
     }
 
     get firstDropWindow(){
-        return $('.mat-form-field-wrapper.ng-tns-c151-4');
+        return $('//div[@id="mat-select-value-1"]');
     }
-
+    
     get optionsList(){
         return $('//div[@role="listbox"]');
     }

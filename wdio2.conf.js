@@ -61,9 +61,7 @@ exports.config = {
             browserName: 'chrome',
             acceptInsecureCerts: true,
             'goog:chromeOptions':{
-                //args: ['--headless'],
-                mobileEmulation: { deviceName: 'iPad Pro' },
-              
+                //args: ['--headless'], 
             },
             // If outputDir is provided WebdriverIO can capture driver session logs
             // it is possible to configure which logTypes to include/exclude.
@@ -214,9 +212,9 @@ exports.config = {
      * @param {Object}         browser      instance of created browser/device session
      */
 
-    before: async function (capabilities, specs) {
+    /*before: async function (capabilities, specs) {
         await browser.deleteCookies();
-    },
+    },*/
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name

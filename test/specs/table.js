@@ -3,7 +3,6 @@ const ModalWindow = require('../pageobjects/modalWindow');
 
 describe('Check links', () => {
     before('open site', async function () {
-        //await browser.emulateDevice('iPad Pro'); //doesn't work in Firefox, func emulateDevice is not found
         await ModalWindow.open();
     });
     

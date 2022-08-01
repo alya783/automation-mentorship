@@ -6,7 +6,7 @@ describe('Get information', () => {
         await browser.deleteCookies();
     });
 
-    it('get JSON responce', async function () {
+    it('get JSON response', async function () {
         const getRequest = await browser.mock(query, { method : 'get' });
         await ModalWindow.open();
         const data = getRequest.calls;
@@ -15,4 +15,23 @@ describe('Get information', () => {
     });
 });
 
-// URL Firefox the same https://srv.buysellads.com/ads/CEAI65QN.json?segment=placement:stocksnapio , but it doesn't work
+describe('Catch network requests', () => {
+    before(async () => {
+        await browser.deleteCookies();
+    });
+
+    it('should show json responses', async function(){
+        browser.cdp('Network', 'enable');
+        browser.on('Network.responseReceived', (params) => {
+            if(params.response.mimeType === "application/json"){
+                console.log(`Loaded ${params.response.url}`);   
+                browser.cdp('Network', 'getResponseBody', {
+                    requestId : params.requestId
+                }).then((res) => {
+                    console.log(res);
+                });
+            }     
+        });
+        await ModalWindow.open();
+    });
+}); 

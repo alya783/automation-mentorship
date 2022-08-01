@@ -63,7 +63,6 @@ exports.config = {
             'goog:chromeOptions':{
                 args: ['--headless'],
                 mobileEmulation: { deviceName: 'iPad Pro' },
-              
             },
             //'custom:networkConnectionEnabled': true,
             // If outputDir is provided WebdriverIO can capture driver session logs
@@ -82,8 +81,6 @@ exports.config = {
                 binary: '/opt/fireFoxNight/fireFoxNight/firefox-Nightly', 
                 // download Nightly version and write the path to it
                 args: ['--headless'],
-                mobileEmulation: { deviceName: 'iPad Pro' },
-                "moz:debuggerAddress": true,
             },
             
             // If outputDir is provided WebdriverIO can capture driver session logs
