@@ -8,6 +8,10 @@ class Materias {
         return $('//div[@id="mat-select-value-1"]');
     }
     
+    get materailExample(){
+        return $('//div[@material-docs-example="form-field-overview"]');
+    }
+
     get optionsList(){
         return $('//div[@role="listbox"]');
     }

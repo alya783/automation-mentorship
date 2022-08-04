@@ -10,7 +10,7 @@ describe('Take action', () => {
         await Materials.form.scrollIntoView();
         await Materials.form.click();
         await expect(browser).toHaveTitle('Form field | Angular Material');
-        await $('//div[@material-docs-example="form-field-overview"]').scrollIntoView();
+        await Materials.materailExample.scrollIntoView();
         await Materials.firstDropWindow.click();
         await Materials.optionsList.waitForDisplayed({ timeout: 3000 });
         await Materials.firstOpt.click();
@@ -32,6 +32,7 @@ describe('Take action', () => {
         await expect(browser).toHaveTitle('Drag and Drop | Angular Material');
         await Materials.exampleWindow.waitForDisplayed({ timeout: 3000 });
         const source = await Materials.dragObj;
-        await source.dragAndDrop({x: 300, y: 0}, 10); 
+        console.log(source);
+        await source.dragAndDrop({x: 30, y: 0}, 10);
     });
 });
